@@ -2,7 +2,7 @@ package com.fanfeifan.beans;
 
 public class Camp {
 
-	private Integer cid;
+	private Integer jjjjcid;
 	private String cname ;
 
 	public Camp() {

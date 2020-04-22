@@ -3,7 +3,7 @@ package com.fanfeifan.beans;
 public class Camp {
 
 	private Integer cid;
-	private String cname;
+	private String cname ;
 
 	public Camp() {
 		super();

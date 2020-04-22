@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<<mapper namespace="com.fanfeifan.mapper.HerosMapper">
+	<select id="queryAll" parameterType="map" resultType="com.fanfeifan.beans.Heros">
+	SELECT * FROM heros h,camp c WHERE h.`cid`=c.`cid`
+	
+	<if test="cid != null and cid != ''">
+		and c.cid=#{cid}
+	</if>
+	<if test="status != null and status != ''">
+		and h.status=#{status}
+	</if>
+	<if test="price != null and price != ''">
+		and h.price=#{price}
+	</if>
+	<if test="uptime != null and uptime !=''">
+		and h.uptime=#{uptime}
+	</if>
+	</select>
+	
+	<select id="queryCamp" resultType="com.fanfeifan.beans.Camp">
+		select * from camp
+	</select>
+	
+	<insert id="addHeros" parameterType="com.fanfeifan.beans.Heros">
+		insert into heros
+		(hname,price,uptime,status,cid)
+		values
+		(#{hname},#{price},#{uptime},#{status},#{cid})
+	</insert>
+	
+	<select id="queryById" parameterType="int" resultType="com.fanfeifan.beans.Heros">
+		select * from heros where id=#{0}
+	</select>
+	
+	<update id="updateHeros" parameterType="int">
+		update heros set status=1 where id=#{0}
+	</update>
+</mapper>
